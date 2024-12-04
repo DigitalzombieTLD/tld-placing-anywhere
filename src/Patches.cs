@@ -4,6 +4,7 @@ using Il2Cpp;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Il2CppTLD.Placement;
 
 namespace PlacingAnywhere
 {
@@ -251,10 +252,11 @@ namespace PlacingAnywhere
         }
     }
 
-    [HarmonyPatch(typeof(PlayerManager), "StartPlaceMesh", new Type[] { typeof(GameObject), typeof(float), typeof(PlaceMeshFlags) })]
+    // PlaceMeshRules rules = PlaceMeshRules.Default
+    [HarmonyPatch(typeof(PlayerManager), "StartPlaceMesh", new Type[] { typeof(GameObject), typeof(float), typeof(PlaceMeshFlags), typeof(PlaceMeshRules) })]
     internal class PlayerManager_StartPlaceMesh
     {
-        private static void Prefix(PlayerManager __instance, GameObject objectToPlace)
+        private static void Prefix(PlayerManager __instance, GameObject objectToPlace, PlaceMeshRules rules)
         {
             PlacingAnywhere.mouseSensivity = GameManager.GetVpFPSPlayer().FPSCamera.MouseSensitivity;
 
@@ -365,6 +367,7 @@ namespace PlacingAnywhere
         }
     }*/
 
+    /*
     [HarmonyPatch(typeof(PlayerManager), "TintObject", new Type[] { typeof(GameObject), typeof(MeshLocationCategory) })]
     internal class PlayerManager_TintObject
     {
@@ -379,7 +382,7 @@ namespace PlacingAnywhere
                 return true;
             }
         }
-    }
+    }*/
 
     //Fix for ModComponent Compatibility
     [HarmonyPatch(typeof(GameManager), "Awake")]
