@@ -8,6 +8,8 @@ using Il2CppTLD.Placement;
 
 namespace PlacingAnywhere
 {
+
+    
     [HarmonyPatch(typeof(PlayerManager), "DoPositionCheck")]
     internal class PlayerManager_DoPositionCheck
     {
@@ -266,6 +268,7 @@ namespace PlacingAnywhere
                 PlacingAnywhere.lastRotation = objectToPlace.transform.eulerAngles;
             }
 
+            
             PlacingAnywhere.currentVertices.Clear();
 
             if (PlacingAnywhere.conformToggle)
@@ -295,6 +298,7 @@ namespace PlacingAnywhere
                     }
                 }
             }
+            
         }
 
         private static void Postfix(PlayerManager __instance)
@@ -339,7 +343,7 @@ namespace PlacingAnywhere
         }
     }
 
-    /*[HarmonyPatch(typeof(PlayerManager), "CancelPlaceMesh")]
+    [HarmonyPatch(typeof(PlayerManager), "CancelPlaceMesh")]
     internal class PlayerManager_CancelPlaceMesh
     {
         private static void Postfix(PlayerManager __instance)
@@ -365,7 +369,7 @@ namespace PlacingAnywhere
                 PlacingAnywhere.paHUD.SetActive(false);
             }
         }
-    }*/
+    }
 
     /*
     [HarmonyPatch(typeof(PlayerManager), "TintObject", new Type[] { typeof(GameObject), typeof(MeshLocationCategory) })]
@@ -428,6 +432,15 @@ namespace PlacingAnywhere
         public static void Postfix()
         {
             PlacingAnywhere.RemoveItemsFromPhysicalCollisionMask();
+        }
+    }
+
+    [HarmonyPatch(typeof(PlayerManager), "CanPlaceCurrentPlaceable")]
+    internal class PlayerManager_CanPlaceCurrentPlaceable
+    {
+        private static void Postfix(PlayerManager __instance, ref bool __result)
+        {
+            __result = true;
         }
     }
 }

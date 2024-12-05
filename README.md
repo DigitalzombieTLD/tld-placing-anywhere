@@ -4,6 +4,9 @@ Mod for The Long Dark that removes restrictions when placing items, and adds con
 
 ## Changelog
 
+### v2.8
+* Not even crashing your game now
+
 ### v2.7
 * Updated to work with TLD 2.33
 

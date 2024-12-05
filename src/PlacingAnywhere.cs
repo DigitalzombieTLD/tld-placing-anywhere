@@ -397,12 +397,14 @@ namespace PlacingAnywhere
 
         internal static void AddItemsToPhysicalCollisionMask()
         {
-            Utils.m_PhysicalCollisionLayerMask |= 1 << vp_Layer.Gear;
+            // Crashes the game on 95% of scene transitions
+            // Utils.m_PhysicalCollisionLayerMask |= 1 << vp_Layer.Gear;
         }
 
         internal static void RemoveItemsFromPhysicalCollisionMask()
         {
-            Utils.m_PhysicalCollisionLayerMask &= ~(1 << vp_Layer.Gear);
+            // Crashes the game on 95% of scene transitions
+            // Utils.m_PhysicalCollisionLayerMask &= ~(1 << vp_Layer.Gear);
         }
     }
 }
