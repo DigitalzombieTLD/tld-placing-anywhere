@@ -216,7 +216,7 @@ namespace PlacingAnywhere
 
             if (includeGear)
             {
-                num |= 131072;
+                num |= 1 << vp_Layer.Gear;
             }
             RaycastHit result;
             Physics.Raycast(start, direction, out result, float.PositiveInfinity, num);
