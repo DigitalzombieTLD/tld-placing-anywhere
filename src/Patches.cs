@@ -48,6 +48,7 @@ namespace PlacingAnywhere
             {
                 //gameObject.transform.eulerAngles = PlacingAnywhere.lastRotation;
                 gameObject.transform.eulerAngles = new Vector3(PlacingAnywhere.lastRotation.x, gameObject.transform.eulerAngles.y, PlacingAnywhere.lastRotation.z);
+                if (!PlacingAnywhere.conformToggle) gameObject.transform.position = raycastHit.point;
             }
 
             //Z Rotation - G/H
